@@ -56,7 +56,7 @@ server.on('request', async (req, res) => {
         return res.end(JSON.stringify(response))
     }
     // Send the JSON response
-    return res.end(result);
+    return res.end(JSON.stringify({ label: result }));
 });
 
 server.listen(port, hostname, () => {
