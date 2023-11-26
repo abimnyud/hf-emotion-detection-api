@@ -23,12 +23,12 @@ server.on('request', async (req, res) => {
     let result = "";
     if (parsedUrl.pathname === '/classify' && text) {
         response = await fetch(
-            "https://api-inference.huggingface.co/models/StevenLimcorn/indonesian-roberta-base-emotion-classifier?wait_for_model=true",
+            "https://api-inference.huggingface.co/models/StevenLimcorn/indonesian-roberta-base-emotion-classifier",
             {
                 headers: { Authorization: `Bearer ${process.env.API_KEY}` },
                 method: "POST",
                 body: JSON.stringify({
-                    inputs: text,
+                    inputs: text.toLowerCase().trim(),
                     option: {
                         wait_for_model: true
                     }
