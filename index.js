@@ -50,8 +50,8 @@ server.on('request', async (req, res) => {
             })
         }
     } else {
-        response = { 'error': 'Not found' }
-        res.statusCode = 404;
+        response = { 'error': 'Bad request' }
+        res.statusCode = 400;
 
         return res.end(JSON.stringify(response))
     }
