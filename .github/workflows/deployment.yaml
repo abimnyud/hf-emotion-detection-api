@@ -19,8 +19,8 @@ jobs:
       - run: mkdir ~/.ssh
       - run: echo "$SSH_KEY" >> ~/.ssh/github-action
       - run: chmod 600 ~/.ssh/github-action
-      - run: echo -e "Host vps\n\tUser kajur-app\n\tHostname 103.127.96.31\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
-      - name: "[RUNNER] Copy dist folder"
+      - run: echo -e "Host vps\n\tUser kajur-app\n\tHostname 103.127.96.31\n\tPubKeyAuthentication yes\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
+      - name: "[RUNNER] Copy new file"
         run: rsync -ae ssh ./ vps:/home/kajur-app/hf-emotion-detection-api/
       - name: "[RUNNER] Go to directory"
         run: ssh vps "cd /home/kajur-app/hf-emotion-detection-api/"
