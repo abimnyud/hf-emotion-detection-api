@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '18.x'
       - run: mkdir ~/.ssh
-      - run: echo "$SSH_KEY" >> ~/.ssh/github-action.pub
+      - run: echo "$SSH_KEY" >> ~/.ssh/github-action
       - run: chmod 600 ~/.ssh/github-action
       - run: echo -e "Host vps\n\tUser kajur-app\n\tHostname 103.127.96.31\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No\n\t" >> ~/.ssh/config
       - name: "[RUNNER] Copy new file"
