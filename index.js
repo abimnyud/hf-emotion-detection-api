@@ -27,7 +27,12 @@ server.on('request', async (req, res) => {
             {
                 headers: { Authorization: `Bearer ${process.env.API_KEY}` },
                 method: "POST",
-                body: JSON.stringify(text),
+                body: JSON.stringify({
+                    inputs: text,
+                    option: {
+                        wait_for_model: true
+                    }
+                }),
             }
         );
 
@@ -45,11 +50,13 @@ server.on('request', async (req, res) => {
             })
         }
     } else {
-        response = { 'error': 'Bad request' }
-        res.statusCode = 400;
+        response = { 'error': 'Not found' }
+        res.statusCode = 404;
+
+        return res.end(JSON.stringify(response))
     }
     // Send the JSON response
-    res.end(result);
+    return res.end(result);
 });
 
 server.listen(port, hostname, () => {
