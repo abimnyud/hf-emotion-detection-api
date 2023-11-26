@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Check env
         if: ${{ env.SSH_KEY == '' }}
-        run: 'echo "echo the secret \"SSH_KEY\" has not been made; echo please go to \"settings \> secrets \> actions\" to create it'
+        run: 'echo "echo the secret \"SSH_KEY\" has not been made; echo please go to \"settings \> secrets \> actions\" to create it"'
       - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
